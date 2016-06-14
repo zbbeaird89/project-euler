@@ -1,3 +1,5 @@
+
+//MULTIPLES OF 3 AND 5
 function findMultiples(num1, num2) {
 	var array = [];
 	for (var i = 1; i <= 1000; i++) {
