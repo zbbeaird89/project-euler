@@ -1,18 +1,6 @@
-
-//MULTIPLES OF 3 AND 5
-function findMultiples(num1, num2) {
-	var array = [];
-	for (var i = 1; i <= 1000; i++) {
-		if ((i % num1 === 0) && (i % num2 === 0)) {
-			array.push(i);
-		} else if (i % num1 === 0) {
-			array.push(i);
-		} else if (i % num2 === 0) {
-			array.push(i);
-		}
-	}
-	return array;
-}
+/**************************************
+SCRIPTS
+**************************************/
 
 function sum(array) {
 	var total = 0;
@@ -22,4 +10,70 @@ function sum(array) {
 	return total;
 }
 
-console.log(sum(findMultiples(3, 5)));
+
+
+//Multiples of 3 and 5
+function findMultiples() {
+	var array = [];
+	for (var i = 1; i <= 1000; i++) {
+		if ((i % 3 === 0) && (i % 5 === 0)) {
+			array.push(i);
+		} else if (i % 3 === 0) {
+			array.push(i);
+		} else if (i % 5 === 0) {
+			array.push(i);
+		}
+	}
+	return array;
+}
+
+
+//Even Fibonacci numbers
+function evenFibNum() {
+	var array = [1, 2];
+
+	function fibSeq() {
+		var next = array[array.length - 2] + array[array.length - 1];
+		if (next <= 4000000) {
+			array.push(next);
+			fibSeq();
+		}
+	}
+
+	function evenNums(num) {
+		if (num % 2 === 0) {
+			return num;
+		}
+	}
+
+	fibSeq();
+	return array.filter(evenNums);
+}
+
+
+
+//Largest Prime Factor
+
+
+
+
+/**************************************
+DOM
+**************************************/
+
+var solutions = {
+	prob1: sum(findMultiples()),
+	prob2: sum(evenFibNum())
+}
+
+var buttons = document.getElementsByClassName('btn');
+
+function showAnswer() {
+	var probId = this.attributes['data-id'].value,
+	    answer = document.getElementById(probId);
+	answer.innerHTML = solutions[probId];
+}
+
+for (var i = 0; i < buttons.length; i++) {
+	buttons[i].addEventListener('click', showAnswer);
+}

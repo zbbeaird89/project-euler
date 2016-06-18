@@ -8,15 +8,15 @@ a {
 	text-decoration: none;
 }
 
-input {
-	display: block;
+h2 {
 	margin: 10px auto 10px;
 }
 
 .header,
 .panel-heading,
 .panel-body,
-.btn {
+.btn,
+h2 {
 	font-family: arial, sans-serif;
 }
 
