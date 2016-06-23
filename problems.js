@@ -51,7 +51,7 @@ function evenFib() {
 
 
 //Largest Prime Factor
-function largestPrimeFactor(product) {
+/*function largestPrimeFactor(product) {
 
 	function primeNumbers() {
 		var all        = [],
@@ -73,8 +73,6 @@ function largestPrimeFactor(product) {
 				//Finds numbers that aren't prime
 				} else if (target % current === 0 && target != current && current != 1) {
 					counter += 1;
-					/*console.log("Target: " + target + "; Current is " + current +
-						        "; Counter: " + counter);*/
 				}
 			}
 			if (counter === 0) {
@@ -108,7 +106,54 @@ function largestPrimeFactor(product) {
 
 	var factors = primeFactors(primeNumbers());
 
-	console.log(factors.reduce(largestFactor));
+	return factors.reduce(largestFactor);
+}*/
+
+
+function largestPrimeFactor(value) {
+
+	var prime   = [],
+		factors = [],
+		answer  = 0,
+		counter = 0;
+
+	//Find Prime Numbers
+	for (var target = 2; target < Math.ceil(value / 2); target++) {				
+		for (var current = 2; current < target; current++) {
+			//1 isn't a prime number
+			if (target === 1) {
+				counter += 1;
+			//Finds numbers that aren't prime
+			} else if (target % current === 0 && target != current && current != 1) {
+				counter += 1;
+			}
+		}
+		if (counter === 0) {
+			prime.push(target);
+		} else {
+			counter = 0;
+		}
+	}
+
+	//Find Prime Factors
+	for (var factor = 0; factor < prime.length; factor++) {
+		var number = prime[factor];
+		if (value % number === 0) {
+			factors.push(number)
+		}
+	}
+
+	//Find Largest Prime Factor
+	for (var i = 0; i < factors.length; i++) {
+		var curr = factors[i],
+			next = factors[i + 1];
+		if (next > curr) {
+			answer = next;
+		} else {
+			answer = curr;
+		}
+	}
+	return answer;
 }
 
 
@@ -120,7 +165,7 @@ DOM
 var solutions = {
 	prob1: sum(findMultiples()),
 	prob2: sum(evenFib()),
-	prob3: largestPrimeFactor(13195)
+	prob3: largestPrimeFactor(6578)
 }
 
 var buttons = document.getElementsByClassName('btn');
