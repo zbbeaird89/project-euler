@@ -1,7 +1,6 @@
 /**************************************
 SCRIPTS
 **************************************/
-
 function sum(array) {
 	var total = 0;
 	for (var i = 0; i < array.length; i++) {
@@ -11,20 +10,19 @@ function sum(array) {
 }
 
 
+//find multiples of 3 or 5
+//the sum of those multiples must be below 1000
+
 
 //Multiples of 3 and 5
-function findMultiples() {
-	var array = [];
-	for (var i = 1; i <= 1000; i++) {
-		if ((i % 3 === 0) && (i % 5 === 0)) {
-			array.push(i);
-		} else if (i % 3 === 0) {
-			array.push(i);
-		} else if (i % 5 === 0) {
-			array.push(i);
+function sumMultiples(a, b) {
+	var total   = 0;
+	for (var i = 1; (total + i) < 1000; i++) {
+		if (i % a === 0 || i % b === 0) {
+			total += i;
 		}
 	}
-	return array;
+	return total;
 }
 
 
@@ -163,7 +161,7 @@ DOM
 **************************************/
 
 var solutions = {
-	prob1: sum(findMultiples()),
+	prob1: sumMultiples(3, 5),
 	prob2: sum(evenFib()),
 	prob3: largestPrimeFactor(6578)
 }
